@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    sell
+{% endblock %}
+
+{% block main %}
+
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select name="symbol" class="form-control">
+                <option disabled="id" value="" selected="">Symbol</option>
+
+                   {% for trans in transakcijatabela %}
+                <option value="{{ trans.id }}"/>{{ trans.name }} from {{ trans.symbol }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input name="shares" class="form-control" type="number" min="0" placeholder="Shares" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+
+{% endblock %}
